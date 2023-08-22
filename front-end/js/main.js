@@ -1,23 +1,25 @@
-import init, { conta_caratteri } from "../../pkg/wasm_textspector.js";
+import init, { TextAnalyzer, TextContent } from "../../pkg/wasm_textspector.js";
 
 async function main() {
-	// Inizializza il modulo WebAssembly
+
 	await init();
 
-	// Una volta che il modulo WASM è stato inizializzato, continua con il normale flusso del codice
+	const textContent = new TextContent();
+
 	const q = (el) => document.querySelector(el);
 
 	const textInput = q("#text-input");
+	const countCharacters = q("#count-characters");
+	const countCharacterWithNoSpace = q("#count-characters-with-no-space");
 
 	textInput.addEventListener('input', (e) => {
 		let text = e.target.value;
-		console.log('js:', text);
+		textContent.set_content(text);
 
-		// Usa la funzione del modulo WebAssembly
-		console.log('WASM:', conta_caratteri(text));
+		countCharacters.textContent = TextAnalyzer.count_characters(textContent);
+		countCharacterWithNoSpace.textContent = TextAnalyzer.count_characters_excluding_spaces(textContent);
+
 	});
 }
 
-// Avvia la funzione principale
-main();
-
+window.addEventListener('DOMContentLoaded', main);

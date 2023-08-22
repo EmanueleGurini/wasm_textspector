@@ -6,9 +6,14 @@
     <title>Text Spector</title>
   </head>
   <body>
-    <input type="text" id="text-input" />
+    <textarea
+      placeholder="Scrivi o incolla qui il testo"
+      type="text"
+      id="text-input"
+    ></textarea>
+    <p id="count-characters">0</p>
+    <p id="count-characters-with-no-space">0</p>
     <!-- SCRIPT -->
     <script type="module" src="./js/main.js"></script>
-    <script type="module" src="../pkg/wasm_textspector.js"></script>
   </body>
 </html>
