@@ -1,0 +1,14 @@
+{
+  "name": "wasm_textspector",
+  "version": "0.1.0",
+  "files": [
+    "wasm_textspector_bg.wasm",
+    "wasm_textspector.js",
+    "wasm_textspector.d.ts"
+  ],
+  "module": "wasm_textspector.js",
+  "types": "wasm_textspector.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
